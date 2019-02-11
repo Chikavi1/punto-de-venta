@@ -18,3 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/inventario','InventarioController');
+
+Route::get('/pdf', function(){
+
+	$now = new \DateTime();
+	$data = "datoo jeje";
+	$pdf = PDF::loadView('tickets', ['now' => $now ]);
+
+
+	return $pdf->download('ticket.pdf');
+})->name('pdf');
+
+Route::get('/ticket','HomeController@ticket')->name('ticket');
+Route::get('/reportes','ReportesController@index')->name('reportes');
+Route::get('/devoluciones','HomeController@devoluciones')->name('devoluciones');
+Route::get('/profile','HomeController@profile')->name('profile');

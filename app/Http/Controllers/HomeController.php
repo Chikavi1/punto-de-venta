@@ -23,6 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $now = new \DateTime();
+        
+        return view('home')->with(compact('now'));
+    }
+    public function ticket(){
+        $now = new \DateTime();
+        
+        return view('tickets')->with(compact('now'));
+    }
+    public function devoluciones(){
+        return view('devoluciones.index');
+    }
+
+    public function profile(){
+        return view('profile');
     }
 }
