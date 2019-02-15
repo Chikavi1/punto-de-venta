@@ -35,7 +35,7 @@ setTimeout('relojillo()',1000)
 
 <div class="row">
     <div class="col m10 offset-m1">
-        <div class="card">
+        <div class="card p5">
 
             <div class="row">
                 <div class="col m4"><p> {!! $now->format('d/m/Y'); !!} </p> <p  id="hora"> hora</p></div>
@@ -79,7 +79,7 @@ setTimeout('relojillo()',1000)
                    
                 </tbody>
                 <tr>
-                    <td>Cajero Luis Rojas</td>
+                    <td>Cajero: {{ Auth::user()->name }} </td>
                     <td></td>
                     <td></td>
                     <td>Total</td>
