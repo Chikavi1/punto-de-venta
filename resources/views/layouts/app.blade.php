@@ -24,13 +24,23 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
+<script>
+  $(document).ready(function(){
+     $('.dropdown-trigger').dropdown();
+    $('.fixed-action-btn').floatingActionButton();
+        
+  });
+
+</script>
     <script>
       
       $(document).ready(function(){
 
+
         $(".searchbtn").click(function(){
-          $("#navsearch").toggle();
-           $(".searchbtn").sidenav();
+        $("#navsearch").toggle();
+        $(".searchbtn").sidenav();
+          
         });
 
         $(".cgreen").click(function(){
@@ -42,6 +52,10 @@
 
 
    <style>
+
+   .dropdown-content{
+    top:100% !important;
+   }
     .white-c{
     color:white !important;
       }
@@ -61,7 +75,7 @@
 <body>
     <nav>
         <div class="nav-wrapper color-cut">
-          <a href="/" class="brand-logo center">Chikavi's</a>
+          <a href="/home" class="brand-logo center">Chikavi's</a>
           <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="left hide-on-med-and-down">
           </ul>
@@ -73,13 +87,30 @@
                             <li><a href="{{ route('register') }}">Registrar</a></li>
                                 @endif
                         @else
-                            <li><a href="{{ route('inventario.index') }}">Inventario</a></li>
+                            <li><a href="{{ route('products.index') }}">Inventario</a></li>
                             <li><a href="{{ route('reportes') }}">Reportes</a></li>
                             <li><a href="{{ route('devoluciones') }}">Devoluciones</a></li>
+
+
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('profile') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="caret"></span>
                                 </a>
+
+                            </li>
+                            <li><a class='dropdown-trigger' href='#' data-target='dropdown1'> {{ Auth::user()->name }}</a>
+                              </li>
+
+                             <ul id='dropdown1' class='dropdown-content'>
+                              <li><a href="{{ route('profile') }}">Ver perfil</a></li>
+                              <li class="divider" tabindex="-1"></li>
+                              <li><a href="">Ayuda</a></li>
+                              <li class="red"><a class="dropdown-item white-c" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Salir
+                                    </a></li>
+                            </ul>
 
                                 <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -92,7 +123,6 @@
                                         @csrf
                                     </form>
                                 </div>-->
-                            </li>
                         @endguest
 
                         
