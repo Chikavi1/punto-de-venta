@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -9,6 +10,7 @@
     console.log($('#inicios').val());
   });
 </script>
+
 	<div class="row">
 		<div class="col m10 offset-m1 card">
 			<h4 class="center-align">Generar Reporte</h4>
