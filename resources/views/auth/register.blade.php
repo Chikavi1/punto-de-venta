@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
 <div class="container">
     <div class="row ">
-        <div class="col  m6 s12">
+        <div class="col  m6 offset-m3 s12">
             <div class="center">
                 <h2>Registrarse</h2>
 
