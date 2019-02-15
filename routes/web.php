@@ -18,7 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/inventario','InventarioController');
 
 Route::get('/pdf', function(){
 
@@ -30,7 +29,9 @@ Route::get('/pdf', function(){
 	return $pdf->download('ticket.pdf');
 })->name('pdf');
 
-Route::get('/ticket','HomeController@ticket')->name('ticket');
-Route::get('/reportes','ReportesController@index')->name('reportes');
-Route::get('/devoluciones','HomeController@devoluciones')->name('devoluciones');
-Route::get('/profile','HomeController@profile')->name('profile');
+Route::get('/ticket','HomeController@ticket')->name('ticket')->middleware('auth');;
+Route::get('/reportes','ReportesController@index')->name('reportes')->middleware('auth');;
+Route::get('/devoluciones','HomeController@devoluciones')->name('devoluciones')->middleware('auth');;
+Route::get('/profile','HomeController@profile')->name('profile')->middleware('auth');;
+Route::resource('/products','ProductsController')->middleware('auth');;
+Route::resource('/categories','CategoriesController')->middleware('auth');
