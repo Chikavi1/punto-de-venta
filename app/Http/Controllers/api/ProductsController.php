@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
+use App\Categories;
 class ProductsController extends Controller
 {
     /**
@@ -14,10 +15,18 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        
-        return Products::all();
+        return Products::all(); 
+
     }
 
+    public function getAll()
+    {
+        return Products::all(); 
+    }
+
+    public function getCategories(){
+        return Categories::all();
+    }
     /**
      * Show the form for creating a new resource.
      *

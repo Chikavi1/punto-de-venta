@@ -81,16 +81,16 @@ setTimeout('relojillo()',1000)
                 <tr>
                     <td>Cajero: {{ Auth::user()->name }} </td>
                     <td></td>
-                    <td></td>
                     <td>Total</td>
                     <td>$21.00</td>
+                    <td></td>
                   </tr>
             </table>
             
         </div>
     </div>
 </div>
-<a href=" {{ route('pdf') }} ">Generar Ticket</a>
+<!--<a href=" {{ route('pdf') }} ">Generar Ticket</a>-->
 <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Leer Codigo de Barras</h4>

@@ -42,6 +42,7 @@ class ProductsController extends Controller
 
         $product = new Products([
             'codigoBarra' => $request->codigoBarra ,
+            'imagen' => $request->imagen,
             'cantidad' => $request->cantidad ,
             'categoria' => $request->categoria ,
             'nombre' => $request->nombre ,

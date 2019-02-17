@@ -1,1 +1,24 @@
-edit.blade.php
+@extends('layouts.app')
+
+@section('content')
+<div class="row">
+	<div class="col m6 offset-m3 card p5">
+		
+	<h1 class="center-align p3">Editar Categoria</h1>
+	<form method="POST" action="{{ route('categories.update',$category->id) }}" >
+                    @csrf
+		<div class="input-field">
+			<input type="text" name="nombre" required value="{{ $category->nombre }}" >
+			<label for="nombre">nombre</label>
+		</div>
+		<div class="input-field">
+			<input type="text" name="imagen" required value="{{ $category->imagen }}">
+			<label for="imagen">Imagen</label>
+		</div>
+
+		<input type="submit" value="enviar" class="btn btn-block color-cut">
+	</form>
+
+	</div>
+</div>
+@endsection

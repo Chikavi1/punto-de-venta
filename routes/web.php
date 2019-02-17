@@ -19,15 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/pdf', function(){
-
-	$now = new \DateTime();
-	$data = "datoo jeje";
-	$pdf = PDF::loadView('tickets', ['now' => $now ]);
-
-
-	return $pdf->download('ticket.pdf');
-})->name('pdf');
+Route::get('/pdf', 'ReportesController@pdf')->name('pdf');
 
 Route::get('/ticket','HomeController@ticket')->name('ticket')->middleware('auth');;
 Route::get('/reportes','ReportesController@index')->name('reportes')->middleware('auth');;

@@ -72,12 +72,12 @@
 
 
                         <div class="form-group row">
-                            <label for="code" class="col-sm-4 col-form-label text-md-right">Role</label>
+                            <label for="role" class="col-sm-4 col-form-label text-md-right">Role</label>
 
                             <div class="col-md-6">
-                                <select name="" id="">
-                                    <option value="">Cajero</option>
-                                    <option value="">Administrador</option>
+                                <select name="role" id="">
+                                    <option value="Cajero">Cajero</option>
+                                    <option value="Administrador">Administrador</option>
                                 </select>
                             </div>
                         </div>

@@ -25,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('categories.edit');
+        return view('categories.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class CategoriesController extends Controller
         ]);
         $category->save();
 
-        return view('/catogories');
+        return redirect('/categories');
     }
 
     /**
@@ -92,6 +92,6 @@ class CategoriesController extends Controller
     {
         $category = Categories::findOrFail($id);
         $category->delete();
-        return view('/categories');
+        return redirect('/categories');
     }
 }

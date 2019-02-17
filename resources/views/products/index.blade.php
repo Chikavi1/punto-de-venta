@@ -5,8 +5,6 @@
      $(document).ready(function(){
     $('.modal').modal();
   });
-
-
   </script>
 
 
@@ -48,23 +46,23 @@
 	            <td><a href="#modal{{$product->id}}"  class="red-text modal-trigger">Eliminar</a>
 	            	<a href="{{ route('products.edit',$product->id)}}"class="green-text">Editar</a>
 
-	            	<div id="modal{{$product->id}}" class="modal">
-    <div class="modal-content">
+	<div id="modal{{$product->id}}" class="modal">
+	    <div class="modal-content">
 
-	<h3>Confirmacion para eliminar</h3>
-   	<p>¿Estas seguro que deseas eliminar <b>{{$product->nombre}}</b> ?</p>
-    
-    </div>
-    <div class="modal-footer">
-      <form method="POST" action="{{ route('products.destroy',$product->id) }}">
-      <a href="#!" class="modal-close waves-effect waves-green blue-text btn-flat">Cancelar</a>
-      	@csrf
-      	@method('DELETE')
-      	<button class="btn red white-text" type="submit">Aceptar</button>
-      </form>
-    
-    </div>
-  </div>
+		<h3>Confirmacion para eliminar</h3>
+	   	<p>¿Estas seguro que deseas eliminar <b>{{$product->nombre}}</b> ?</p>
+	    
+	    </div>
+	    <div class="modal-footer">
+	      <form method="POST" action="{{ route('products.destroy',$product->id) }}">
+	      <a href="#!" class="modal-close waves-effect waves-green blue-text btn-flat">Cancelar</a>
+	      	@csrf
+	      	@method('DELETE')
+	      	<button class="btn red white-text" type="submit">Aceptar</button>
+	      </form>
+	    
+	    </div>
+	  </div>
 
 	            </td>
 	          </tr>
@@ -85,30 +83,7 @@
 	    
 	</div>
 </div>
-
-<div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Leer Codigo de Barras</h4>
-      <p>Ingresa a la App Chikavi's © y lee el siguiente codigo</p>
-
-      <div class="codebar center">
-        {!! DNS1D::getBarcodeSVG("4445645656", "C128"); !!}
-        <p>
-            4445645656
-            
-        </p>
-    </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-    </div>
-  </div>
-
-
-
-
-
-  <div class="fixed-action-btn">
+ <div class="fixed-action-btn">
   <a class="btn-floating btn-large color-cut" href="{{ route('products.create') }}">
     <i class="large material-icons">add</i>
   </a>
