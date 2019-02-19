@@ -37,21 +37,24 @@ td{
 	
 <table>	
 	<thead class="cabeza center-align">	
-		<tr>	
-			<td >id</td>
-			<td>Folio</td>
-			<td>Producto id</td>
-		</tr>
+		<tr>
+          <th>Folio</th>
+          <th>Cantidad</th>
+          <th>Vendedor</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+	    </tr>
 	</thead>
 	<tbody class="center-align">	
 		@foreach($resultado as $res)
-
-		<tr>	
-			<td>{{$res->id}}</td>
-			<td>{{$res->folio}}</td>
-			<td>{{$res->product_id}}</td>
-		</tr>
-		@endforeach
+	          <tr>
+	            <td>{{$res->folio}}</td>
+	            <td>{{$res->cantidad}}</td>
+	            <td>{{$res->vendedor}}</td>
+	            <td>{{$res->nombre}}</td>
+	            <td>{{$res->precio}}</td>
+	          </tr>
+	    @endforeach
 
 	</tbody>
 </table>

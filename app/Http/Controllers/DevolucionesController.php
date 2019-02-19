@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Session;
-use App\ventas;
-use App\Products;
-class ReportesController extends Controller
+use App\Ventas;
+class DevolucionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +13,12 @@ class ReportesController extends Controller
      */
     public function index(Request $request)
     {
-        $entrada = $request->get('FInicio');
-        $entrada2 = $request->get('FFinal');
-
-        
-        $ini =  date("y/m/d",strtotime($entrada));
-        $fin = date('y/m/d',strtotime($entrada2));
-
-
-       // $resultado = Venta::whereBetween('created_at', [$entrada, $entrada2])->get();
-        $resultado = Ventas::whereBetween('created_at',array($entrada,$entrada2))->get();
-
-        $products = Products::findOrFail($resultado);
-
-        \Session::flash('resultado', $resultado);
-        return view('reportes.index')->with(compact('resultado','entrada','entrada2','ini','fin','products'));
+        if($request->get('folio')){
+            $resultado = Ventas::SearchFolio($request->get('folio'));
+        }else{
+            $resultado = [];
+        }
+         return view('devoluciones.index')->with(compact('resultado'));
     }
 
     /**
@@ -37,16 +26,6 @@ class ReportesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-  
-
-    public function pdf(){
-        $resultado = \Session::get('resultado');
-        $pdf = \PDF::loadView('reportes.pdf', ['resultado' => $resultado ]);
-        return $pdf->download('ticket.pdf');
-
-        
-    }
     public function create()
     {
         //
@@ -60,7 +39,7 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**

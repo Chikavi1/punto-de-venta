@@ -33,32 +33,39 @@
 		</div>
 	</div>
 
+		@if(!empty($resultado->count()))
 	<div class="row">
 		<div class="col m10 offset-m1">
 		<div class="resultado" >
 			
-		<h4>Resultado</h4>
-		@foreach($resultado as $res)
-			<ul class="collection">
-		      <li class="collection-item">
-		      	<div class="row">
-		      		<div class="col s4">
-				      	{{ $res->id }}
-		      		</div>
-		      		<div class="col s4">
-				      	{{ $res->folio }}
-		      		</div>
-		      		<div class="col s4">
-					{{$res->product_id}}
-		      		</div>
-		      	</div>
-			</li>
+		<h4 class="center-align">Resultado</h4>
+		<table class="striped">
+	        <thead>
+	          <tr>
+	              <th>Folio</th>
+	              <th>Cantidad</th>
+	              <th>Vendedor</th>
+	              <th>Nombre</th>
+	              <th>Precio</th>
+	          </tr>
+	        </thead>
 
-		    </ul>
-		@endforeach
+	        <tbody>
+	        	@foreach($resultado as $res)
+	          <tr>
+	            <td>{{$res->folio}}</td>
+	            <td>{{$res->cantidad}}</td>
+	            <td>{{$res->vendedor}}</td>
+	            <td>{{$res->nombre}}</td>
+	            <td>{{$res->precio}}</td>
+	          </tr>
+	          @endforeach
+	        </tbody>
+      </table>
 		<a href="{{ route('pdf') }}" class="btn btn-block color-cut">Imprimir</a>
 
 		</div>
+		@endif
 
 	</div>
 	

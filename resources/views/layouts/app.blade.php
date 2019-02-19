@@ -8,9 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Chikavi's</title>
-    <link rel="icon" href="{{asset('ico.png')}}" sizes="16x16">
-    <link rel="manifest" href="{{asset('manifest.json')}}">
     <!-- Scripts -->
+    <link rel="icon" type="image/png" href="{{asset('img/logo.png')}}" />
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/materialize.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" ></script>

@@ -41,8 +41,8 @@
 	            <td>{{$product->categoria}}</td>
 	            <td>{{$product->nombre}}</td>
 	            <td>{!! $product->descripcion !!}</td>
-	            <td>{{$product->costo}}</td>
-	            <td>{{$product->precio}}</td>
+	            <td>${{$product->costo}}</td>
+	            <td>${{$product->precio}}</td>
 	            <td><a href="#modal{{$product->id}}"  class="red-text modal-trigger">Eliminar</a>
 	            	<a href="{{ route('products.edit',$product->id)}}"class="green-text">Editar</a>
 
@@ -70,14 +70,15 @@
 	         
 	           
 	        </tbody>
-	        <tr>
+	        <tr class="color-cut white-text">
 	            <td>Cajero: {{ Auth::user()->name }}</td>
-	            <td></td>
+	            <td>{{ $totalCantidad }}</td>
 	            <td></td>
 	            <td></td>
 	            <td>Total</td>
-	            <td>{{ $totalCosto }}</td>
-	            <td>{{ $totalPrecio }}</td>
+	            <td>${{ $totalCosto }}</td>
+	            <td>${{ $totalPrecio }}</td>
+	            <td></td>
 	          </tr>
 	    </table>
 	    

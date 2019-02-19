@@ -17,13 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/home', 'VentasController@index')->name('home');
 Route::get('/pdf', 'ReportesController@pdf')->name('pdf');
-
 Route::get('/ticket','HomeController@ticket')->name('ticket')->middleware('auth');;
 Route::get('/reportes','ReportesController@index')->name('reportes')->middleware('auth');;
-Route::get('/devoluciones','HomeController@devoluciones')->name('devoluciones')->middleware('auth');;
+Route::get('/devoluciones','DevolucionesController@index')->name('devoluciones')->middleware('auth');;
 Route::get('/profile','HomeController@profile')->name('profile')->middleware('auth');;
+
+Route::resource('/ventas','VentasController');
 Route::resource('/products','ProductsController')->middleware('auth');;
 Route::resource('/categories','CategoriesController')->middleware('auth');
+
+
+Route::get('/ticketchico',function(){
+	return view('reportes.ticket');
+});

@@ -15,9 +15,10 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Products::all();
+        $totalCantidad = Products::getTotalCantidad();
         $totalCosto = Products::getTotalCosto();
         $totalPrecio = Products::getTotalPrecio();
-        return view('products.index')->with(compact('products','totalCosto','totalPrecio'));
+        return view('products.index')->with(compact('products','totalCosto','totalPrecio','totalCantidad'));
     }
 
     /**

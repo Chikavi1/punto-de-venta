@@ -15,5 +15,12 @@ class Products extends Model
     public function scopegetTotalPrecio(){
     	return $this->sum("precio");
     }
+    public function venta(){
+    	return $this->belongsTo('App\Venta');
+    }
+    public function scopegetTotalCantidad(){
+        return $this->sum('cantidad');
+    }
+
 }
 

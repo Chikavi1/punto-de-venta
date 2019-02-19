@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Session;
-use App\ventas;
-use App\Products;
-class ReportesController extends Controller
+use App\Ventas;
+use Auth;
+class VentasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +14,11 @@ class ReportesController extends Controller
      */
     public function index(Request $request)
     {
-        $entrada = $request->get('FInicio');
-        $entrada2 = $request->get('FFinal');
-
-        
-        $ini =  date("y/m/d",strtotime($entrada));
-        $fin = date('y/m/d',strtotime($entrada2));
-
-
-       // $resultado = Venta::whereBetween('created_at', [$entrada, $entrada2])->get();
-        $resultado = Ventas::whereBetween('created_at',array($entrada,$entrada2))->get();
-
-        $products = Products::findOrFail($resultado);
-
-        \Session::flash('resultado', $resultado);
-        return view('reportes.index')->with(compact('resultado','entrada','entrada2','ini','fin','products'));
+        $now = new \DateTime();
+        $ventas = Ventas::all();
+        $ventas = Ventas::Search($request->get("busqueda"));
+        $totalVentas = Ventas::totalVentas();
+        return view('ventas.index')->with(compact('now','ventas','totalVentas'));
     }
 
     /**
@@ -37,19 +26,9 @@ class ReportesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-  
-
-    public function pdf(){
-        $resultado = \Session::get('resultado');
-        $pdf = \PDF::loadView('reportes.pdf', ['resultado' => $resultado ]);
-        return $pdf->download('ticket.pdf');
-
-        
-    }
     public function create()
     {
-        //
+        return view('ventas.create');
     }
 
     /**
@@ -60,7 +39,17 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $venta = new Ventas([
+            'folio' => $request->folio,
+            'cantidad' => $request->cantidad,
+            'vendedor' => Auth::user()->name,
+            'nombre' => $request->nombre,
+            'products_id' => "1",
+            'precio' => $request->precio
+        ]);
+
+        $venta->save();
+        return redirect('/home');
     }
 
     /**
@@ -82,7 +71,8 @@ class ReportesController extends Controller
      */
     public function edit($id)
     {
-        //
+       $venta = Ventas::findOrFail($id);
+        return view('ventas.edit')->with(compact('venta'));
     }
 
     /**
@@ -105,6 +95,8 @@ class ReportesController extends Controller
      */
     public function destroy($id)
     {
-        //
+     $venta = Ventas::findOrFail($id);
+     $venta->delete();
+     return redirect('/home');
     }
 }
