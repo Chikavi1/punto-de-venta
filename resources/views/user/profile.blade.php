@@ -19,7 +19,7 @@
 					<h1 class="center-align">{{$usuario->name}}</h1>
 				</div>
 
-       <img src="{{ Storage::url($usuario->imagen)}}"
+       <img src="{{ $usuario->imagen}}"
          alt="" width="300" height="300" class="img">
 
 				<div class="p5">
@@ -36,6 +36,10 @@
             <td>Role</td>
             <td>{{ $usuario->role }}</td>
           </tr>
+           <tr>
+            <td>Celular</td>
+            <td>{{ $usuario->celular }}</td>
+          </tr>
           <tr>
             <td>Correo</td>
             <td>{{ $usuario->email }}</td>
@@ -43,7 +47,7 @@
         </tbody>
       </table>
         </div>
-            <a href="{{ route('profile2') }}" class="blue btn btn-block color-cut">Modificar Datos</a>
+            <a href="{{ route('edit',$usuario->id) }}" class="blue btn btn-block color-cut">Modificar Datos</a>
 			</div>
 		</div>
 	</div>

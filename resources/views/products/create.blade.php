@@ -14,7 +14,7 @@
   <div class="col s12 m6 offset-m3">
     <div class="card padding">
         <h4 class="center-align p5">Nuevo Producto</h4>
-       <form method="post" action="{{route('products.store')}}"  class="p5">
+       <form method="post" action="{{route('products.store')}}"  class="p5" enctype="multipart/form-data">
                     @csrf
                 <div class="input-field">
                     <input type="text" class="form-control" name="nombre" required />
@@ -45,11 +45,18 @@
                 </textarea>
                     
                 </div>
-                <div class="input-field">
-                  <i class="material-icons prefix">add_photo_alternate</i>
-                  <input id="imagen" name="imagen" type="tel" class="validate">
-                  <label for="imagen">Imagen</label>
+
+                <div class="file-field input-field">
+                  <div class="btn color-cut">
+                    <span>Imagen</span>
+                    <input type="file" name="avatar">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
                 </div>
+
+
                 <div class="input-field">
 
                   <i class="material-icons prefix">fastfood</i>

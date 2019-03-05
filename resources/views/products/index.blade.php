@@ -104,15 +104,15 @@
 
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
-    <i class="large material-icons">hamburguer</i>
+    <i class="large material-icons">list</i>
   </a>
   <ul>
   	<a class="btn-floating btn-large color-cut tooltipped" href="{{ route('products.create') }}" data-position="left" data-tooltip="Agregar producto">
-    <i class="large material-icons">add</i>
+    <i class="large material-icons">note_add</i>
   	</a>
 
   		<a class="btn-floating btn-large yellow tooltipped" href="{{ route('categories.index') }}" data-position="left" data-tooltip="Agregar Categoria">
-    <i class="large material-icons">add</i>
+    <i class="large material-icons">category</i>
   	</a>
 
   </ul>

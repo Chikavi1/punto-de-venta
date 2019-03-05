@@ -33,4 +33,9 @@ class HomeController extends Controller
         $usuario = auth()->user();
         return view('profile')->with(compact('usuario'));
     }
+     public function profile2(){
+        $usuario = auth()->user();
+        //dd($usuario);
+        return view('profile2')->with(compact('usuario'));
+    }
 }

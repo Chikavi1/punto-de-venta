@@ -16,7 +16,7 @@
 					<div class="col m6 ">
 					  <div class="card">
 					    <div class="card-image waves-effect waves-block waves-light">
-					      <img class="activator" src="{{$category->imagen}}" height="300" >
+					      <img class="activator" src="/{{$category->imagen}}" height="300" >
 					    </div>
 					    <div class="card-content">
 					      <span class="card-title center-align activator grey-text text-darken-4">{{$category->nombre}}<i class="material-icons right">more_vert</i></span>

@@ -5,16 +5,22 @@
 	<div class="col m6 offset-m3 card p5">
 		
 	<h1 class="center-align p3">Editar Categoria</h1>
-	<form method="POST" action="{{ route('categories.update',$category->id) }}" >
-                    @csrf
+	<form  action="{{ route('categories.update',$category->id) }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
 		<div class="input-field">
 			<input type="text" name="nombre" required value="{{ $category->nombre }}" >
 			<label for="nombre">nombre</label>
 		</div>
-		<div class="input-field">
-			<input type="text" name="imagen" required value="{{ $category->imagen }}">
-			<label for="imagen">Imagen</label>
-		</div>
+		<div class="file-field input-field">
+                  <div class="btn color-cut">
+                    <span>Imagen</span>
+                    <input type="file" name="avatar" value="{{$category->imagen}}" required>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+            </div>
 
 		<input type="submit" value="enviar" class="btn btn-block color-cut">
 	</form>

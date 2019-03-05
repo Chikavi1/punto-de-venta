@@ -41,10 +41,15 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
 
+        if($request->hasFile('avatar')){
+
+            $imagen = $request->file('avatar')->store('public');
+            $resultado = str_replace("public", "storage", $imagen);
+        }
 
         $product = new Products([
             'codigoBarra' => $request->codigoBarra ,
-            'imagen' => $request->imagen,
+            'imagen' => $resultado,
             'cantidad' => $request->cantidad ,
             'categoria' => $request->categoria ,
             'nombre' => $request->nombre ,
@@ -91,8 +96,21 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Products::findOrFail($id)->update($request->all());
-        return redirect('/products');
+         $product = Products::findOrFail($id);
+        if($request->hasFile('avatar')){
+            $imagen = $request->file('avatar')->store('public');
+            $resultado = str_replace("public", "storage", $imagen);
+        }
+        $product->imagen = $resultado;
+        $product->nombre = $request->get('nombre');
+        $product->codigoBarra = $request->codigoBarra;
+        $product->cantidad = $request->cantidad ;
+        $product->categoria = $request->categoria ;
+        $product->descripcion = $request->descripcion ;
+        $product->costo = $request->costo ;
+        $product->precio = $request->precio;
+        $product->save();
+        return redirect()->route('products.index');
     }
 
     /**

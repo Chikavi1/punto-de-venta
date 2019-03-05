@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categories;
-
-class CategoriesController extends Controller
+use App\User;
+use Auth;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,12 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Categories::all();
-        return view('categories.index')->with(compact('categories'));
+        //
+    }
+
+    public function profile(){
+        $usuario = User::find(Auth::id());
+        return view('user.profile')->with(compact("usuario"));
     }
 
     /**
@@ -25,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        //
     }
 
     /**
@@ -37,20 +41,6 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
-
-         if($request->hasFile('avatar')){
-
-            $imagen = $request->file('avatar')->store('public');
-            $resultado = str_replace("public", "storage", $imagen);
-        }
-        
-        $category = new Categories([
-            'nombre' => $request->nombre,
-            'imagen' => $resultado                
-        ]);
-        $category->save();
-
-        return redirect('/categories');
     }
 
     /**
@@ -72,8 +62,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Categories::findOrFail($id);
-        return view('categories.edit')->with(compact('category'));
+        $usuario = User::findOrFail($id);
+        return view('user.edit')->with(compact('usuario'));
     }
 
     /**
@@ -85,17 +75,18 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Categories::findOrFail($id);
+        $user = User::findOrFail($id);
         if($request->hasFile('avatar')){
 
             $imagen = $request->file('avatar')->store('public');
             $resultado = str_replace("public", "storage", $imagen);
         }
-        $category->imagen = $resultado;
-        $category->nombre = $request->get('nombre');
-        $category->save();
-        return redirect()->route('categories.index');
+        $user->imagen = $resultado;
+        $user->celular = $request->get('celular');
+        $user->name = $request->get('name');
+        $user->save();
 
+        return redirect()->route('profile');
     }
 
     /**
@@ -106,8 +97,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categories::findOrFail($id);
-        $category->delete();
-        return redirect('/categories');
+        //
     }
 }
