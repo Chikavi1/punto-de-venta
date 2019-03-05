@@ -51,9 +51,15 @@
                   <label for="imagen">Imagen</label>
                 </div>
                 <div class="input-field">
+
                   <i class="material-icons prefix">fastfood</i>
-                  <input id="categoria" name="categoria" type="tel" class="validate">
-                  <label for="categoria">Categoria</label>
+                 <select name="categoria">
+                    <option  disabled selected>Escoge una Categoria</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->nombre}}">{{$category->nombre}}</option>
+                    @endforeach
+                  </select>
+
                 </div>
                 <div class="input-field">
                       <i class="material-icons prefix orange-text">straighten</i>

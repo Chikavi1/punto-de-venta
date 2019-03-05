@@ -100,10 +100,12 @@
                             <li><a class='dropdown-trigger' href='#' data-target='dropdown1'> {{ Auth::user()->name }}</a>
                               </li>
 
-                             <ul id='dropdown1' class='dropdown-content'>
-                              <li><a href="{{ route('profile') }}">Ver perfil</a></li>
+                             <ul id='dropdown1' class='dropdown-content' >
+                              <li><a href="{{ route('profile') }}" style="color:black ;">Ver perfil</a></li>
                               <li class="divider" tabindex="-1"></li>
-                              <li><a href="">Ayuda</a></li>
+                              <li><a href="" style="color:black;">Ayuda</a></li>
+                              <li class="divider" tabindex="-1"></li>
+                              <li><a href="{{ route('estadistica') }}" style="color:black;">Estadisticas</a></li>
                               <li class="red"><a class="dropdown-item white-c" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

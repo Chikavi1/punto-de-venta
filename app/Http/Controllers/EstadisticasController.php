@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ventas;
 use App\Products;
-use App\Categories;
-class ProductsController extends Controller
+
+class EstadisticasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +15,41 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
-        $totalCantidad = Products::getTotalCantidad();
-        $totalCosto = Products::getTotalCosto();
-        $totalPrecio = Products::getTotalPrecio();
-        return view('products.index')->with(compact('products','totalCosto','totalPrecio','totalCantidad'));
+        $pizza = Ventas::buscarCategoria('pizza')->count();
+        $cerveza = Ventas::buscarCategoria('cerveza')->count();
+        $alitas = Ventas::buscarCategoria('alitas')->count();
+        $ventas = Ventas::count();
+        $productos = Products::count();
+        $estadistica = 
+            array("pizza" => $pizza,
+                "cerveza" => $cerveza,
+                "alitas" => $alitas,
+                "ventas" => $ventas,
+                "productos" => $productos);
+        return view('estadisticas.index')->with(compact('estadistica'));
     }
+    public function estadistica(){
+       
+        $todo = array("pizza" => $pizza,"cerveza" => $cerveza);
+        return $todo;
+        //,$alitas,$ventas,$productos
+    }
+    public function getEstadisticas(){
+         $pizza = Ventas::buscarCategoria('pizza')->count();
+        $cerveza = Ventas::buscarCategoria('cerveza')->count();
+        $alitas = Ventas::buscarCategoria('alitas')->count();
+        $ventas = Ventas::count();
+        $productos = Products::count();
 
+        $estadistica  = array(
+            array("pizza" => $pizza,
+                "cerveza" => $cerveza,
+                "alitas" => $alitas,
+                "ventas" => $ventas,
+                "productos" => $productos));
+
+        return $estadistica;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,8 +57,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Categories::all();
-        return view('products.create')->with(compact('categories'));
+        //
     }
 
     /**
@@ -40,23 +68,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        $product = new Products([
-            'codigoBarra' => $request->codigoBarra ,
-            'imagen' => $request->imagen,
-            'cantidad' => $request->cantidad ,
-            'categoria' => $request->categoria ,
-            'nombre' => $request->nombre ,
-            'descripcion' => $request->descripcion ,
-            'costo' => $request->costo ,
-            'precio' => $request->precio
-        ]);
-
-        $product->save();
-
-        return redirect('/products');
-
+        //
     }
 
     /**
@@ -78,8 +90,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::findOrFail($id);
-        return view('products.edit')->with(compact('product'));
+        //
     }
 
     /**
@@ -91,8 +102,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Products::findOrFail($id)->update($request->all());
-        return redirect('/products');
+        //
     }
 
     /**
@@ -103,10 +113,6 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $Product = Products::findOrFail($id);
-         
-        $Product->delete();
-
-        return redirect('/products');
+        //
     }
 }

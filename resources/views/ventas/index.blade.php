@@ -58,6 +58,8 @@ setTimeout('relojillo()',1000)
 
               </form>
             </div>
+
+            @if(!empty($ventas->count()))
             <table>
                 <thead>
                   <tr>
@@ -89,7 +91,12 @@ setTimeout('relojillo()',1000)
                     <td>{{ $totalVentas}}</td>
                   </tr>
             </table>
-            
+            @else
+            <div class="center">
+              <img src="{{asset('img/shopping.png')  }}" class="center" width="100" alt="no tienes ventas aun">
+              <h3>No tienes ningun registro</h3>
+            </div>
+            @endif
         </div>
     </div>
 </div>

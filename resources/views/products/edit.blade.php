@@ -14,7 +14,8 @@
   <div class="col s12 m6 offset-m3">
     <div class="card padding">
         <h4 class="center-align p5">Editar Producto</h4>
-       <form method="post" action="{{route('products.store')}}"  class="p5">
+       <form method="post" action="{{route('products.update',$product->id)}}"  class="p5">
+         @method('PATCH')
                     @csrf
                 <div class="input-field">
                     <input type="text" class="form-control" name="nombre" value="{{ $product->nombre }}" />
@@ -45,7 +46,11 @@
                 </textarea>
                     
                 </div>
-               
+                <div class="input-field">
+                  <i class="material-icons prefix">add_photo_alternate</i>
+                  <input id="imagen" name="imagen" type="tel" class="validate" value="{{$product->imagen}}">
+                  <label for="imagen">Imagen</label>
+                </div>
                 <div class="input-field">
                   <i class="material-icons prefix">fastfood</i>
                   <input id="categoria" name="categoria" type="tel" class="validate" value="{{ $product->categoria }}">
@@ -77,7 +82,7 @@
                 </div>
 
                 
-                <button type="submit" class="btn btn-block color-cut">Crear</button>
+                <button type="submit" class="btn btn-block color-cut">Editar producto</button>
        </form>
     </div>
   </div>

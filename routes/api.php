@@ -19,3 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('products','api\ProductsController@getAll');
 Route::get('categories','api\ProductsController@getCategories');
+Route::post('/createVenta','VentasController@createVenta');
+Route::get('ventas','VentasController@getAllVentas');
+Route::get('estadisticas','EstadisticasController@getEstadisticas');
+Route::post('ventas/delete','VentasController@delete');
+
+Route::get('ventasmesa','VentasController@getbyMesa');

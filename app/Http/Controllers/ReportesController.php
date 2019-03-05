@@ -43,7 +43,7 @@ class ReportesController extends Controller
     public function pdf(){
         $resultado = \Session::get('resultado');
         $pdf = \PDF::loadView('reportes.pdf', ['resultado' => $resultado ]);
-        return $pdf->download('ticket.pdf');
+        return $pdf->download('reporte.pdf');
 
         
     }

@@ -20,8 +20,10 @@
 		</div>
 	</div>
 	@if(!empty($resultado))
+
 	<div class="row ">
 		<div class="col m6 offset-m3 card " id="resultado">
+			@if(count($resultado) > 0 )
 		<table class="striped">
 	        <thead>
 	          <tr>
@@ -35,7 +37,9 @@
 	        </thead>
 			
 	        <tbody>
+
 	        	@foreach($resultado as $res)
+
 	          <tr>
 	            <td>{{$res->folio}}</td>
 	            <td>{{$res->cantidad}}</td>
@@ -56,8 +60,21 @@
 	          </tr>
 	          @endforeach
 	        </tbody>
+
       </table>
+	        <form method="GET" >
+	        	<input type="hidden" value="{{$folio}}" name="folioDeleteAll">
+	        	<button class="btn btn-block red">Cancelar Todo</button>
+	        </form>
 		</div>
+			@else
+			<div class="center">
+				<h4>Por favor ingresa correctamente el folio</h4>
+				<img src="{{ asset('img/search.png') }}" width="200">
+			</div>
+			@endif
+
+
 	</div>
 	@endif
 @endsection

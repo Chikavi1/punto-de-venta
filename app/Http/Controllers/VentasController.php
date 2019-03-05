@@ -15,9 +15,10 @@ class VentasController extends Controller
     public function index(Request $request)
     {
         $now = new \DateTime();
-        $ventas = Ventas::all();
+        $ventas = \DB::table('ventas')->where('status', 1)->get();
         $ventas = Ventas::Search($request->get("busqueda"));
-        $totalVentas = Ventas::totalVentas();
+
+        $totalVentas = $ventas->sum('precio');
         return view('ventas.index')->with(compact('now','ventas','totalVentas'));
     }
 
@@ -30,6 +31,31 @@ class VentasController extends Controller
     {
         return view('ventas.create');
     }
+
+    //use for Api 
+
+    public function createVenta(Request $request){
+        $Venta = Ventas::create($request->all());
+        return $Venta;
+    }
+
+    public function getAllVentas(){
+      return Ventas::all();
+    }
+
+    public function getbyMesa(Request $request){
+        return Ventas::BuscarMesa($request->mesa);
+    }
+
+
+    public function delete(Request $request){
+
+    $venta = Ventas::findOrFail($request->id);
+    $venta->delete();
+    return $venta;
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

@@ -13,8 +13,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                filter:brightness(.95); 
+                background-image: url('img/alcohol.jpg');
+                background-size: cover;
+                color: white;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -46,14 +48,21 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 100px;
+                font-weight: bold;
+                color:white;
+                text-shadow: -4px 0 #14202f, 0 4px #14202f, 4px 0 #14202f, 0 -4px #14202f;
             }
-
+            .slogan{
+                 color:white;
+                text-shadow: -3px 0 #17202f, 0 3px #17202f, 3px 0 #17202f, 0 -3px #17202f;
+            }
             .links > a {
-                color: #636b6f;
+                color: white;
+                filter:brightness(1);
                 padding: 0 25px;
                 font-size: 13px;
-                font-weight: 600;
+                
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -82,9 +91,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Chikavi's
+                    CHIKAVI'S
                 </div>
-
+            <h1 class="slogan">Cervezas más frias que el corazón de tu ex</h1>
                 
             </div>
         </div>

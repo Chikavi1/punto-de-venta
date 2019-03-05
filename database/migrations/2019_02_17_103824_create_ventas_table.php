@@ -19,9 +19,11 @@ class CreateVentasTable extends Migration
             $table->string('cantidad');
             $table->string('vendedor');
             $table->string('nombre');
+            $table->integer('mesa');
+            $table->integer('status');
             $table->decimal('precio');
             $table->unsignedInteger('products_id');
-            $table->foreign ('products_id')->references('id')->on('products');
+            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

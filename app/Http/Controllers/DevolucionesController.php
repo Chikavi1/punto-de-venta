@@ -13,13 +13,22 @@ class DevolucionesController extends Controller
      */
     public function index(Request $request)
     {
+        $folio = 0;
         if($request->get('folio')){
+            $folio = $request->get('folio');
             $resultado = Ventas::SearchFolio($request->get('folio'));
+
         }else{
             $resultado = [];
         }
-         return view('devoluciones.index')->with(compact('resultado'));
+
+        if($request->get('folioDeleteAll')){
+            Ventas::DeleteAll($request->get('folioDeleteAll'));
+            }
+
+         return view('devoluciones.index')->with(compact('resultado','folio'));
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -4,6 +4,7 @@
 <script>
      $(document).ready(function(){
     $('.modal').modal();
+     $('.tooltipped').tooltip();
   });
   </script>
 
@@ -14,6 +15,8 @@
 
 <div class="row">
 	<div class="col m9 offset-m1 s12 card">
+		@if(!empty($products->count()))
+
 	    <table class="centered">
 	        <thead>
 	          <tr>
@@ -81,13 +84,41 @@
 	            <td></td>
 	          </tr>
 	    </table>
-	    
+	    @else
+	    <div class="center">
+	    	
+	    	<img src="{{asset('img/shopping-bag.png')  }}" class="center" width="200" alt="no tienes productos">
+	    	<h3>no tienes productos</h3>
+	    </div>
+	    @endif
+
 	</div>
 </div>
+
+
  <div class="fixed-action-btn">
-  <a class="btn-floating btn-large color-cut" href="{{ route('products.create') }}">
-    <i class="large material-icons">add</i>
-  </a>
+  
   
 </div>
+
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">hamburguer</i>
+  </a>
+  <ul>
+  	<a class="btn-floating btn-large color-cut tooltipped" href="{{ route('products.create') }}" data-position="left" data-tooltip="Agregar producto">
+    <i class="large material-icons">add</i>
+  	</a>
+
+  		<a class="btn-floating btn-large yellow tooltipped" href="{{ route('categories.index') }}" data-position="left" data-tooltip="Agregar Categoria">
+    <i class="large material-icons">add</i>
+  	</a>
+
+  </ul>
+</div>
+      
+
+
+
 @endsection

@@ -27,6 +27,8 @@ class ProductsController extends Controller
     public function getCategories(){
         return Categories::all();
     }
+
+    
     /**
      * Show the form for creating a new resource.
      *

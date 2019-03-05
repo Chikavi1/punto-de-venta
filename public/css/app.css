@@ -51,7 +51,7 @@ div.menuhorizontal li{
   margin-top: 4em;
 }
 .p5{
-  padding: 2em;
+  padding: 2em !important;
 }
 .btn-block{
   width: 100%;
