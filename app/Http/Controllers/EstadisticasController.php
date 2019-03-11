@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Ventas;
+use App\ventas;
 use App\Products;
 
 class EstadisticasController extends Controller
