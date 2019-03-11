@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Ventas;
+use App/Ventas;
 use Auth;
 class VentasController extends Controller
 {
