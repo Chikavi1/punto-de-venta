@@ -25,3 +25,5 @@ Route::get('estadisticas','EstadisticasController@getEstadisticas');
 Route::post('ventas/delete','VentasController@delete');
 
 Route::get('ventasmesa','VentasController@getbyMesa');
+Route::get('productosCategoria','ProductsController@getbyCategoria');
+Route::get('updateStatus','VentasController@updatestatusmethod');

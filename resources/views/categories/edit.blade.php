@@ -9,13 +9,13 @@
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
 		<div class="input-field">
-			<input type="text" name="nombre" required value="{{ $category->nombre }}" >
+			<input type="text" name="nombre"  value="{{ $category->nombre }}" >
 			<label for="nombre">nombre</label>
 		</div>
 		<div class="file-field input-field">
                   <div class="btn color-cut">
                     <span>Imagen</span>
-                    <input type="file" name="avatar" value="{{$category->imagen}}" required>
+                    <input type="file" name="avatar" value="{{$category->imagen}}" >
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">

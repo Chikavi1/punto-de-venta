@@ -80,8 +80,8 @@ class UserController extends Controller
 
             $imagen = $request->file('avatar')->store('public');
             $resultado = str_replace("public", "storage", $imagen);
+            $user->imagen = $resultado;
         }
-        $user->imagen = $resultado;
         $user->celular = $request->get('celular');
         $user->name = $request->get('name');
         $user->save();

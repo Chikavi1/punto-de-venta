@@ -5,11 +5,30 @@
     .codebar{
         height: 80px !important;
     }
+     .tabs .tab a{
+            color:#17202f;
+        } /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            background-color:#17202f;
+            color:white;
+        } /*Text color on hover*/
+
+        .tabs .tab a.active {
+            background-color: #17202f;
+            color:white;
+        } /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color:white;
+        } /*Color of
 </style>
 
 <script>
      $(document).ready(function(){
     $('.modal').modal();
+    $('.tabs').tabs();
+    $('#tabs-swipe-demo').tabs({ 'swipeable': true });
   });
           
     function relojillo()
@@ -59,45 +78,62 @@ setTimeout('relojillo()',1000)
               </form>
             </div>
 
-            @if(!empty($ventas->count()))
-            <table>
-                <thead>
-                  <tr>
-                      <th>folio</th>
-                      <th>Cantidad</th>
-                      <th>vendedor</th>
-                      <th>producto</th>
-                      <th>Precio</th>
-                  </tr>
-                </thead>
 
-                <tbody>
-                  @foreach($ventas as $venta)
-                  <tr>
-                    <td>{{$venta->folio}}</td>
-                    <td>{{$venta->cantidad}}</td>
-                    <td>{{$venta->vendedor}}</td>
-                    <td>{{$venta->products_id}}</td>
-                    <td>${{$venta->precio}}</td>
-                  </tr>
-                  @endforeach
-                   
-                </tbody>
-                <tr>
-                    <td>Cajero: {{ Auth::user()->name }} </td>
-                    <td></td>
-                    <td></td>
-                    <td>Total</td>
-                    <td>{{ $totalVentas}}</td>
-                  </tr>
-            </table>
-            @else
-            <div class="center">
-              <img src="{{asset('img/shopping.png')  }}" class="center" width="100" alt="no tienes ventas aun">
-              <h3>No tienes ningun registro</h3>
-            </div>
-            @endif
-        </div>
+
+
+     @if(!empty($ventas->count()))
+                <table>
+                    <thead>
+                      <tr>
+                          <th>folio</th>
+                          <th>estado</th>
+                          <th>Cantidad</th>
+                          <th>vendedor</th>
+                          <th>producto</th>
+                          <th>Precio</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      @foreach($ventas as $venta)
+                      <tr>
+                        <td>{{$venta->folio}}</td>
+                        <td>@if($venta->status == 0)
+                              pendiente
+                            @else
+                            finalizado
+                            @endif
+                        </td>
+                        <td>{{$venta->cantidad}}</td>
+                        <td>{{$venta->vendedor}}</td>
+                        <td>{{$venta->nombre}}</td>
+                        <td>${{$venta->precio}}</td>
+                      
+                      </tr>
+                      @endforeach
+                       
+                    </tbody>
+                    <tr>
+                        <td>Cajero: {{ Auth::user()->name }} </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="color:green;">Total</td>
+                        <td style="color:green;"> <b>${{ $totalVentas}}</b></td>
+                      </tr>
+                </table>
+                @else
+                <div class="center">
+                  <img src="{{asset('img/shopping.png')  }}" class="center" width="100" alt="no tienes ventas aun">
+                  <h3>No tienes ningun registro</h3>
+                </div>
+                @endif
+
+        
+
+      
+            
+    </div>
     </div>
 </div>
 <!--<a href=" {{ route('pdf') }} ">Generar Ticket</a>-->

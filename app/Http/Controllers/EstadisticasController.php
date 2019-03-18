@@ -38,7 +38,7 @@ class EstadisticasController extends Controller
          $pizza = Ventas::buscarCategoria('pizza')->count();
         $cerveza = Ventas::buscarCategoria('cerveza')->count();
         $alitas = Ventas::buscarCategoria('alitas')->count();
-        $ventas = Ventas::count();
+        $ventas = Ventas::where('status','LIKE',"1")->count();
         $productos = Products::count();
 
         $estadistica  = array(

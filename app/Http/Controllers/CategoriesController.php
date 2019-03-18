@@ -90,8 +90,8 @@ class CategoriesController extends Controller
 
             $imagen = $request->file('avatar')->store('public');
             $resultado = str_replace("public", "storage", $imagen);
+            $category->imagen = $resultado;
         }
-        $category->imagen = $resultado;
         $category->nombre = $request->get('nombre');
         $category->save();
         return redirect()->route('categories.index');

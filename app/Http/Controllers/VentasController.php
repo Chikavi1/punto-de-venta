@@ -15,11 +15,15 @@ class VentasController extends Controller
     public function index(Request $request)
     {
         $now = new \DateTime();
-        $ventas = \DB::table('ventas')->where('status', 1)->get();
-        $ventas = Ventas::Search($request->get("busqueda"));
+        $ventasFinalizadas = \DB::table('ventas')->get();
+        $ventas = \DB::table('ventas')->get();
+        if($request->get("busqueda")){
+            $ventas = Ventas::Search($request->get("busqueda"));
+        }
 
         $totalVentas = $ventas->sum('precio');
-        return view('ventas.index')->with(compact('now','ventas','totalVentas'));
+        $totalventasFinalizadas = $ventas->sum('precio');
+        return view('ventas.index')->with(compact('now','ventas','totalVentas','ventasFinalizadas','totalventasFinalizadas'));
     }
 
     /**
@@ -124,5 +128,9 @@ class VentasController extends Controller
      $venta = Ventas::findOrFail($id);
      $venta->delete();
      return redirect('/home');
+    }
+
+    public function updatestatusmethod(request $request){
+        Ventas::Updatestatus($request->get('folio'));
     }
 }

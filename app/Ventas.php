@@ -32,10 +32,14 @@ class ventas extends Model
         return $query->where('nombre','LIKE',"%$category%")->get();
     }
      public function scopeBuscarMesa($query,$mesa){
-        return $query->where('mesa','LIKE',"%$mesa%")->get();
+        return $query->where('mesa','LIKE',"%$mesa%")->where('status','LIKE',"0")->get();
     }
 
      public function scopeDeleteAll($query,$folio){
         return $query->where('folio','LIKE',"%$folio%")->delete();
+    }
+
+    public function scopeUpdatestatus($query,$folio){
+        return $query->where('folio','LIKE',"%$folio%")->update(array('status' => 1));
     }
 }

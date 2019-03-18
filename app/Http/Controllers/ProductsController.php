@@ -100,8 +100,8 @@ class ProductsController extends Controller
         if($request->hasFile('avatar')){
             $imagen = $request->file('avatar')->store('public');
             $resultado = str_replace("public", "storage", $imagen);
+            $product->imagen = $resultado;
         }
-        $product->imagen = $resultado;
         $product->nombre = $request->get('nombre');
         $product->codigoBarra = $request->codigoBarra;
         $product->cantidad = $request->cantidad ;
@@ -126,5 +126,9 @@ class ProductsController extends Controller
         $Product->delete();
 
         return redirect('/products');
+    }
+
+    public function getbyCategoria(Request $request){
+        return Products::searchCategory($request->get('categoria'));
     }
 }

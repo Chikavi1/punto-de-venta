@@ -22,7 +22,9 @@ class Products extends Model
     public function scopegetTotalCantidad(){
         return $this->sum('cantidad');
     }
-
+    public function scopesearchCategory($query,$categoria){
+        return $query->where('categoria','LIKE',"%$categoria%")->get();
+    }
    
 
 }
