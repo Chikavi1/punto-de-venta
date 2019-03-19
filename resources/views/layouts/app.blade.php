@@ -89,6 +89,7 @@
                             <li><a href="{{ route('products.index') }}">Inventario</a></li>
                             <li><a href="{{ route('reportes') }}">Reportes</a></li>
                             <li><a href="{{ route('devoluciones') }}">Devoluciones</a></li>
+                            <li><a href="{{ route('ticket.index')}}">Tickets</a></li>
 
 
                             <li class="nav-item dropdown">
@@ -103,9 +104,9 @@
                              <ul id='dropdown1' class='dropdown-content' >
                               <li><a href="{{ route('profile') }}" style="color:black ;">Ver perfil</a></li>
                               <li class="divider" tabindex="-1"></li>
-                              <li><a href="" style="color:black;">Ayuda</a></li>
-                              <li class="divider" tabindex="-1"></li>
                               <li><a href="{{ route('estadistica') }}" style="color:black;">Estadisticas</a></li>
+                              <li class="divider" tabindex="-1"></li>
+                              <li><a href="{{ route('ayuda') }}" style="color:black;">Ayuda</a></li>
                               <li class="red"><a class="dropdown-item white-c" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

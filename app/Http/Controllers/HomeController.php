@@ -38,4 +38,8 @@ class HomeController extends Controller
         //dd($usuario);
         return view('profile2')->with(compact('usuario'));
     }
+
+    public function ayuda(){
+        return view('ayuda');
+    }
 }
