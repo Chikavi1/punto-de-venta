@@ -86,8 +86,10 @@
                             <li><a href="{{ route('register') }}">Registrar</a></li>
                                 @endif
                         @else
-                            <li><a href="{{ route('products.index') }}">Inventario</a></li>
-                            <li><a href="{{ route('reportes') }}">Reportes</a></li>
+                            @if(Auth::user()->role == "Administrador")
+                              <li><a href="{{ route('products.index') }}">Inventario</a></li>
+                              <li><a href="{{ route('reportes') }}">Reportes</a></li>
+                            @endif
                             <li><a href="{{ route('devoluciones') }}">Devoluciones</a></li>
                             <li><a href="{{ route('ticket.index')}}">Tickets</a></li>
 
@@ -104,7 +106,9 @@
                              <ul id='dropdown1' class='dropdown-content' >
                               <li><a href="{{ route('profile') }}" style="color:black ;">Ver perfil</a></li>
                               <li class="divider" tabindex="-1"></li>
+                              @if(Auth::user()->role == "Administrador")
                               <li><a href="{{ route('estadistica') }}" style="color:black;">Estadisticas</a></li>
+                            @endif
                               <li class="divider" tabindex="-1"></li>
                               <li><a href="{{ route('ayuda') }}" style="color:black;">Ayuda</a></li>
                               <li class="red"><a class="dropdown-item white-c" href="{{ route('logout') }}"
